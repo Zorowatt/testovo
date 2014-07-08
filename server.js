@@ -3,7 +3,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 var env = process.env.NODE_ENV || 'development';
-var port = 3030;
+var port = process.env.PORT || 3030;
 var app = express();
 app.set('view engine','jade');
 app.set('views', __dirname + '/server/views');
@@ -19,7 +19,14 @@ app.use(stylus.middleware({
     }
 ));
 app.use(express.static(__dirname+'/public'));
-mongoose.connect('mongodb://localhost/ZorodatabaseMongo');
+if (env=='development') {
+    mongoose.connect('mongodb://localhost/ZorodatabaseMongo');
+    console.log('Now you are logged into a LOCAL DB');
+}
+else {
+    mongoose.connect('mongodb://admin:jagarajugara@ds053479.mongolab.com:53479/zorodatabasemongo');
+    console.log('Now you are logged into a REMOTE DB');
+}
 var db = mongoose.connection;
 db.once('open',function(err){
     if (err){
@@ -45,11 +52,11 @@ Message.remove({}).exec(function(err){
        console.log('Messages cannot be cleared: ' + err);
        return;
    }
-  //  console.log('Messages deleted!');
+    console.log('Messages deleted!');
     Message.create({message: 'High from Mongoose'})
         .then(function(model){
             messageFromDatabase = model.message;
-           // console.log(model.message);
+            console.log(model.message);
         });
 });
 
