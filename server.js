@@ -30,7 +30,7 @@ else {
 var db = mongoose.connection;
 db.once('open',function(err){
     if (err){
-      //  console.log('Database cannot ne opened: ' + err);
+        console.log('Database cannot ne opened: ' + err);
         return;
     }
     console.log('Database up and running ...');
