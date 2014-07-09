@@ -53,11 +53,7 @@ Message.remove({}).exec(function(err){
        return;
    }
     console.log('Messages deleted!');
-    Message.create({message: 'High from Mongoose'})
-        .then(function(model){
-            messageFromDatabase = model.message;
-            console.log(model.message);
-        });
+
 });
 
 
