@@ -2,7 +2,7 @@ var express = require('express'),
     stylus = require('stylus'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
-    session = require('express-session'),
+//    session = require('express-session'),
     passport = require('passport');
 
 module.exports = function(app, config){
@@ -10,7 +10,7 @@ module.exports = function(app, config){
     app.set('views', config.rootPath + '/server/views');
     app.use(cookieParser());
     app.use(bodyParser.json());
-   // app.use(session());
+    //app.use(session());
     app.use(bodyParser.urlencoded({
         extended: true
     }));
@@ -24,4 +24,4 @@ module.exports = function(app, config){
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(config.rootPath+'/public'));
-}
+};
