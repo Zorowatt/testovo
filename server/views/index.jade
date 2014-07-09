@@ -1,5 +1,7 @@
 extends includes/layout
 block main-content
-    h2 hi from Index
+    .nav.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a.navbar-brand(href="#/") Zorro
     div(ng-view)
-    h3= message
