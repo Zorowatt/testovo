@@ -8,6 +8,3 @@ app.config(function($locationProvider, $routeProvider) {
             controller: 'MainCtrl'
         })
 });
-app.controller('MainCtrl',function($scope){
-    $scope.hello = 'Hi from angular';
-});
