@@ -1,7 +1,16 @@
 extends includes/layout
 block main-content
-    .nav.navbar-inverse.navbar-fixed-top
+    header.nav.navbar-inverse.navbar-fixed-top
         .container
             .navbar-header
                 a.navbar-brand(href="#/") Zorro
-    div(ng-view)
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="/") Home
+    section
+        div(ng-view)
+
+    footer
+        p.text-center
+            | &copy; Zorro 2014
