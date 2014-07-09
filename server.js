@@ -34,17 +34,17 @@ db.once('open',function(err){
         return;
     }
     console.log('Database up and running ...');
-})
+});
 db.on('error',function(err){
     console.log('Database error: ' + err);
-})
-
-var messageSchema = mongoose.Schema ({
+});
+// This should be uncommented if you need to clear the DB
+/*var messageSchema = mongoose.Schema ({
     message: String
 
 })
-// This should be uncommented if you need to clear the DB
-/*var Message = mongoose.model('Message', messageSchema);
+
+var Message = mongoose.model('Message', messageSchema);
 var messageFromDatabase;
 
 
@@ -63,7 +63,7 @@ app.get('/partials/:partialName', function(req,res) {
     res.render('partials/' + req.params.partialName)
 });
 app.get('*',function(req,res){
-    res.render('index',{message: messageFromDatabase});
+    res.render('index'/*,{message: messageFromDatabase}*/);
 });
 app.listen(port);
 console.log("Server running on port:"+port);
