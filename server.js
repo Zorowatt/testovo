@@ -30,7 +30,7 @@ else {
 var db = mongoose.connection;
 db.once('open',function(err){
     if (err){
-        console.log('Database cannot ne opened: ' + err);
+        console.log('Database cannot be opened: ' + err);
         return;
     }
     console.log('Database up and running ...');
@@ -43,9 +43,10 @@ var messageSchema = mongoose.Schema ({
     message: String
 
 })
-
-var Message = mongoose.model('Message', messageSchema);
+// This should be uncommented if you need to clear the DB
+/*var Message = mongoose.model('Message', messageSchema);
 var messageFromDatabase;
+
 
 Message.remove({}).exec(function(err){
    if (err){
@@ -54,7 +55,7 @@ Message.remove({}).exec(function(err){
    }
     console.log('Messages deleted!');
 
-});
+});*/
 
 
 
