@@ -20,7 +20,8 @@ module.exports = function(config){
         firstName: String,
         lastName: String,
         salt: String,
-        hashPass: String
+        hashPass: String,
+        roles: [String]
     });
 
     userSchema.method ({
@@ -42,23 +43,23 @@ module.exports = function(config){
        }
 
         // if you want to clear the DB and push same data to it just remove the "//", each
-//      user.remove(function(){
+     user.remove(function(){
 
           if (collection.length === 0) {
               var salt;
               var hashedPwd;
               salt = generateSalt();
               hashedPwd = generateHashedPassword(salt, 'zlatozar');
-              user.create({username: 'zorowatt', firstName: 'Zlatozar', lastName: 'Dichev', salt: salt, hashPass: hashedPwd});
+              user.create({username: 'zorowatt', firstName: 'Zlatozar', lastName: 'Dichev', salt: salt, hashPass: hashedPwd, roles: ['admin']});
               salt = generateSalt();
               hashedPwd = generateHashedPassword(salt, 'eva');
-              user.create({username: 'evichka', firstName: 'Eva', lastName: 'Dobreva', salt: salt, hashPass: hashedPwd});
+              user.create({username: 'evichka', firstName: 'Eva', lastName: 'Dobreva', salt: salt, hashPass: hashedPwd, roles: ['user']});
               salt = generateSalt();
               hashedPwd = generateHashedPassword(salt, 'petia');
               user.create({username: 'maika', firstName: 'Patia', lastName: 'Petkova', salt: salt, hashPass: hashedPwd});
               console.log('New users added to DB ... ');
           }
-//      })
+      })
     });
 };
 
