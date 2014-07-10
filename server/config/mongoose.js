@@ -1,7 +1,5 @@
 var mongoose = require('mongoose'),
-    passport = require('passport'),
-    crypto = require('crypto'),
-    localPassport = require('passport-local');
+    crypto = require('crypto');
 
 module.exports = function(config){
     mongoose.connect(config.db);
@@ -34,7 +32,7 @@ module.exports = function(config){
                 return (false);
             }
         }
-    })
+    });
 
     var user = mongoose.model('User',userSchema);
     user.find({}).exec(function(err, collection) {
@@ -59,38 +57,6 @@ module.exports = function(config){
               console.log('New users added to DB ... ');
           }
 //      })
-    });
-
-    passport.use(new localPassport(function(username, password, done){
-        user.findOne({ username: username}).exec(function(err, user){
-            if (err) {
-                console.log('Error logging user: ' + err);
-                return;
-            }
-            if (user){
-                return done(null, user);
-            }
-            else {
-                return done(null, false);
-            }
-        })
-    }));
-
-    passport.serializeUser(function(user, done){
-        if (user){
-            return done(null, user._id);
-        }
-    });
-
-    passport.deserializeUser(function(id, done){
-        user.findOne({_id: id}).exec(function(err, user){
-            if (user) {
-                return done(null, user);
-            }
-            else {
-                return done(null, false);
-            }
-        })
     });
 };
 
