@@ -6,6 +6,7 @@ var config = require('./server/config/config')[env];
 
 require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
+require('./server/config/passport')();
 require('./server/config/routes')(app);
 /*    console.log('Now you are logged into a LOCAL DB');
     mongoose.connect('mongodb://admin:jagarajugara@ds053479.mongolab.com:53479/zorodatabasemongo');
