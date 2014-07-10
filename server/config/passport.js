@@ -9,7 +9,7 @@ module.exports = function () {
                 console.log('Error logging user: ' + err);
                 return;
             }
-            if (user){
+            if (user && user.authenticate(password)){
                 return done(null, user);
             }
             else {

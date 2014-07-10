@@ -25,7 +25,7 @@ module.exports = function(config){
 
     userSchema.method ({
         authenticate: function(password){
-            if (generateSalt(this.salt, password) === this.hashPass) {
+            if (generateHashedPassword(this.salt, password) === this.hashPass) {
                 return (true);
             }
             else {
@@ -40,6 +40,8 @@ module.exports = function(config){
            console.log('Cannot find users: ' + err);
            return;
        }
+
+        // if you want to clear the DB and push same data to it just remove the "//", each
 //      user.remove(function(){
 
           if (collection.length === 0) {
