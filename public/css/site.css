@@ -4,6 +4,9 @@ body {
 .navbar-right .navbar-form input {
   margin-right: 10px;
 }
+.conteiner .jumbotron {
+  border-radius: 20px;
+}
 .toast-top-right {
   top: 70px;
 }

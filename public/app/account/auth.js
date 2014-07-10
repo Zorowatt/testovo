@@ -1,18 +1,27 @@
 app.factory('auth', function($http, $q, identity){
     return {
         login: function(user) {
-            var deffered = $q.defer();
+            var deferred = $q.defer();
             $http.post('/login', user).success(function(response){
                if (response.success){
                    identity.currentUser = response.user;
-                   deffered.resolve(true);
-                   console.log(response.user);
+                   deferred.resolve(true);
                 }
                else{
-                   deffered.resolve(false);
+                   deferred.resolve(false);
                }
             });
-            return deffered.promise;
+            return deferred.promise;
+
+        },
+        logout: function(){
+            var deferred = $q.defer();
+
+            $http.post('/logout').success(function(){
+                identity.currentUser = undefined;
+                deferred.resolve();
+            })
+            return deferred.promise;
 
         }
     }
