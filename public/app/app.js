@@ -7,4 +7,8 @@ app.config(function($locationProvider, $routeProvider) {
             templateUrl: '/partials/main/home',
             controller: 'MainCtrl'
         })
+        .when('/admin/users', {
+            templateUrl: '/partials/admin/users-list',
+            controller: 'UserListCtrl'
+        })
 });

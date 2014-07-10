@@ -1,10 +1,12 @@
-app.factory('auth', function($http, $q, identity){
+app.factory('auth', function($http, $q, identity, UsersResource){
     return {
         login: function(user) {
             var deferred = $q.defer();
             $http.post('/login', user).success(function(response){
                if (response.success){
-                   identity.currentUser = response.user;
+                   var user = new UsersResource();
+                   angular.extend(user, response.user);
+                   identity.currentUser = user;
                    deferred.resolve(true);
                 }
                else{
@@ -20,7 +22,7 @@ app.factory('auth', function($http, $q, identity){
             $http.post('/logout').success(function(){
                 identity.currentUser = undefined;
                 deferred.resolve();
-            })
+            });
             return deferred.promise;
 
         }
