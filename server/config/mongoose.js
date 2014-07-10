@@ -43,7 +43,7 @@ module.exports = function(config){
        }
 
         // if you want to clear the DB and push same data to it just remove the "//", each
-     user.remove(function(){
+     //user.remove(function(){
 
           if (collection.length === 0) {
               var salt;
@@ -59,7 +59,7 @@ module.exports = function(config){
               user.create({username: 'maika', firstName: 'Patia', lastName: 'Petkova', salt: salt, hashPass: hashedPwd});
               console.log('New users added to DB ... ');
           }
-      })
+     // })
     });
 };
 
