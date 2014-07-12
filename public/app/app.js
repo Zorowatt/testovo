@@ -5,7 +5,7 @@ app.config(function($locationProvider, $routeProvider) {
 
     var routeRoleChecks = {
         admin: {
-            adminRole: function(auth){
+            auth: function(auth){
                 return auth.isAuthorisedForRole('admin');
             }
         }
@@ -19,7 +19,7 @@ app.config(function($locationProvider, $routeProvider) {
         .when('/admin/users', {
             templateUrl: '/partials/admin/users-list',
             controller: 'UserListCtrl',
-            resolve: routeRoleChecks.adminRole
+            resolve: routeRoleChecks.admin
         })
 });
 

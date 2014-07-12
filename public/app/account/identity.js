@@ -6,7 +6,7 @@ app.factory('identity', function($window, UsersResource){
     }
 
     return {
-        currentUser: user ,
+        currentUser: user,
         isAuthenticated: function(){
             return !!this.currentUser;
         },
