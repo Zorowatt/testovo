@@ -25,6 +25,14 @@ app.factory('auth', function($http, $q, identity, UsersResource){
             });
             return deferred.promise;
 
+        },
+        isAuthorisedForRole: function(role){
+            if (identity.isAuthorisedForRole(role)){
+                return true
+            }
+            else {
+                return $q.reject('non - authorized');
+            }
         }
     }
 });

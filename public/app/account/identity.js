@@ -9,6 +9,9 @@ app.factory('identity', function($window, UsersResource){
         currentUser: user ,
         isAuthenticated: function(){
             return !!this.currentUser;
+        },
+        isAuthorisedForRole: function(role){
+            return !!this.currentUser && this.currentUser.roles.indexOf(role) > -1;
         }
     }
 });
