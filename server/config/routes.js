@@ -1,5 +1,4 @@
-var passport = require('passport'),
-    auth = require('./auth'),
+var auth = require('./auth'),
     mongoose = require('mongoose');
 
 var User = mongoose.model('User');
